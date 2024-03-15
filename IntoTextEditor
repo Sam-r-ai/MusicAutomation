@@ -1,0 +1,19 @@
+# Define download URLs
+$spotifyURL = "https://download.spotify.com/SpotifySetup.exe"
+$amazonMusicURL = "https://static.amazon-music-download.com/amazonmusicinstaller.exe"
+$tidalURL = "https://download.tidal.com/desktop/TIDALSetup.exe"
+
+# Define save paths
+$spotifyPath = "C:\Downloads\SpotifySetup.exe"
+$amazonMusicPath = "C:\Downloads\AmazonMusicInstaller.exe"
+$tidalPath = "C:\Downloads\TIDALSetup.exe"
+
+# Download the installers
+Invoke-WebRequest -Uri $spotifyURL -OutFile $spotifyPath
+Invoke-WebRequest -Uri $amazonMusicURL -OutFile $amazonMusicPath
+Invoke-WebRequest -Uri $tidalURL -OutFile $tidalPath
+
+# Execute the installers
+Start-Process -FilePath $spotifyPath -ArgumentList "/S" # Assuming the installer supports silent installation
+Start-Process -FilePath $amazonMusicPath -ArgumentList "/S" # Assuming the installer supports silent installation
+Start-Process -FilePath $tidalPath -ArgumentList "/S" # Assuming the installer supports silent installation
